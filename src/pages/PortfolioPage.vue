@@ -1,82 +1,71 @@
+﻿<!-- PORTOFOLIO: daftar studi kasus + filter kategori -->
 <template>
-  <div class="relative overflow-hidden">
-    <AmbientBackground />
-    <div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
-      <SectionHeading
-        eyebrow="Portfolio"
-        title="Dokumentasi Karya & Konsep Proyek"
-        description="Setiap item dirender dari data terstruktur memakai v-for. Status ditandai jujur: konsep dan latihan diberi label Placeholder sampai ada bukti implementasi."
-      />
-
-      <div
-        v-if="route.meta?.fromNotFound"
-        class="mt-8 rounded-2xl border border-amber-300/30 bg-amber-500/10 px-5 py-4 text-sm text-amber-200"
-        role="status"
+  <PageShell
+    eyebrow="portofolio"
+    title="Studi Kasus Proyek"
+    description="Setiap proyek didokumentasikan secara terstruktur: latar belakang, analisis, arsitektur sistem, teknologi, serta tantangan dan solusi."
+  >
+    <div class="flex flex-wrap items-center gap-2">
+      <button
+        v-for="c in categories"
+        :key="c"
+        type="button"
+        class="sticker-btn"
+        :class="{ picked: filter === c }"
+        @click="filter = c"
       >
-        Halaman yang Anda cari tidak ditemukan — Anda diarahkan ke Portfolio. Silakan pilih proyek di bawah ini.
-      </div>
+        {{ filter === c ? "✿ " : "" }}{{ c }}
+      </button>
+      <button
+        type="button"
+        class="sticker-btn"
+        style="background: var(--sun)"
+        @click="shuffle"
+      >
+        🎲 Acak Urutan
+      </button>
+    </div>
 
-      <!-- Filter kategori (fitur interaktif tambahan) -->
-      <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter proyek berdasarkan kategori">
-        <button
-          v-for="cat in categories"
-          :key="cat"
-          type="button"
-          :aria-pressed="activeCategory === cat ? 'true' : 'false'"
-          :class="[
-            'rounded-full border px-4 py-2 text-sm font-semibold transition',
-            activeCategory === cat
-              ? 'border-violet-300/60 bg-violet-600/30 text-white'
-              : 'border-white/10 bg-white/[0.03] text-fog hover:border-violet-300/30 hover:text-white',
-          ]"
-          @click="activeCategory = cat"
-        >
-          {{ cat }}
-        </button>
-      </div>
-
-      <p class="mt-4 text-sm text-fog" role="status" aria-live="polite">
-        Menampilkan {{ filtered.length }} dari {{ projects.length }} proyek
-        <template v-if="activeCategory !== 'Semua'"> pada kategori “{{ activeCategory }}”</template>.
-      </p>
-
-      <!-- Grid responsif via Tailwind Grid -->
-      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <ProjectCard v-for="project in filtered" :key="project.id" :project="project" />
-      </div>
-
-      <div class="glass-panel mt-10 rounded-3xl p-6 sm:p-8" aria-label="Catatan kejujuran konten">
-        <h2 class="font-display text-lg font-bold text-white">📝 Catatan dokumentasi</h2>
-        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-fog">
-          Semua proyek di atas berstatus <strong class="text-amber-200">Placeholder</strong>: berupa konsep, ide, atau
-          latihan — bukan aplikasi yang sudah selesai. Setiap kartu tertaut ke halaman detail berisi permasalahan,
-          tujuan, pendekatan, tantangan, dan hasil (yang akan diisi setelah ada bukti nyata). Data tersimpan di
-          <code class="rounded bg-white/10 px-1.5 py-0.5 text-xs text-lilac">src/data/projects.js</code> sehingga mudah
-          ditambah dan diperbarui.
-        </p>
+    <div
+      v-if="filtered.length"
+      class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      <div v-for="p in filtered" :key="p.id">
+        <ProjectCard :project="p" />
       </div>
     </div>
-  </div>
+    <div v-else class="card tilt-l mt-8 px-6 py-16 text-center">
+      <p class="display text-2xl">Tidak Ada Proyek</p>
+      <p class="mx-auto mt-2 max-w-sm text-sm">
+        Tidak ada proyek dalam kategori ini. Silakan pilih kategori lain.
+      </p>
+    </div>
+  </PageShell>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import AmbientBackground from '../components/AmbientBackground.vue'
-import SectionHeading from '../components/SectionHeading.vue'
-import ProjectCard from '../components/ProjectCard.vue'
-import { projects } from '../data/projects.js'
+import { computed, ref } from "vue";
+import PageShell from "../components/PageShell.vue";
+import ProjectCard from "../components/ProjectCard.vue";
+import { projects } from "../data/projects.js";
 
-const route = useRoute()
-const activeCategory = ref('Semua')
+const filter = ref("Semua");
+const order = ref(projects.map((p) => p.id));
 
-const categories = computed(() => {
-  const kinds = new Set(projects.map((p) => p.category.split('·')[1]?.trim() ?? p.category))
-  return ['Semua', ...kinds]
-})
+const categories = computed(() => [
+  "Semua",
+  ...new Set(projects.map((p) => p.category)),
+]);
+const ordered = computed(() =>
+  order.value.map((id) => projects.find((p) => p.id === id)).filter(Boolean),
+);
+const filtered = computed(() =>
+  filter.value === "Semua"
+    ? ordered.value
+    : ordered.value.filter((p) => p.category === filter.value),
+);
 
-const filtered = computed(() => {
-  if (activeCategory.value === 'Semua') return projects
-  return projects.filter((p) => p.category.includes(activeCategory.value))
-})
+function shuffle() {
+  order.value = [...order.value].sort(() => Math.random() - 0.5);
+}
 </script>

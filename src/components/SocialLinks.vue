@@ -1,78 +1,125 @@
+﻿<!-- Ikon sosmed: lingkaran stiker dengan hover kuning -->
 <template>
-  <div class="flex items-center gap-3">
+  <div class="soc">
     <a
-      v-for="link in visibleLinks"
-      :key="link.label"
-      :href="link.href"
-      :aria-label="link.aria"
-      :title="link.available ? link.label : `${link.label} (segera hadir)`"
-      :class="[
-        'flex h-11 w-11 items-center justify-center rounded-full border transition',
-        link.available
-          ? 'border-violet-300/25 bg-violet-500/10 text-lilac hover:border-violet-300/60 hover:bg-violet-500/25 hover:text-white'
-          : 'cursor-not-allowed border-white/10 bg-white/5 text-fog/50',
-      ]"
-      v-bind="link.available ? { target: '_blank', rel: 'noopener' } : { 'aria-disabled': 'true', tabindex: '0' }"
-      @click="handlePlaceholderClick($event, link)"
+      href="https://www.facebook.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Facebook"
     >
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path :d="link.icon" />
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+        <path
+          d="M15.6 4H18V0h-3.2C10.9 0 9 2.3 9 5.6V8H6v4h3v12h4.5V12h3.8l.7-4h-4.5V5.6c0-1 .4-1.6 2.1-1.6Z"
+        />
+      </svg>
+    </a>
+    <a
+      href="https://twitter.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Twitter"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+        <path
+          d="M23 4.6a9 9 0 0 1-2.6.7 4.5 4.5 0 0 0 2-2.5 9.2 9.2 0 0 1-2.9 1.1 4.5 4.5 0 0 0-7.8 3.1c0 .4 0 .7.1 1A12.8 12.8 0 0 1 2.5 3.3a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.5v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1A4.5 4.5 0 0 0 7.7 16 9.1 9.1 0 0 1 1 17.9a12.8 12.8 0 0 0 19.7-10.8v-.6A9.2 9.2 0 0 0 23 4.6Z"
+        />
+      </svg>
+    </a>
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Instagram"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    </a>
+    <a
+      href="https://www.linkedin.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="LinkedIn"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path
+          d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+        />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    </a>
+    <a
+      href="https://www.youtube.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="YouTube"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path
+          d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"
+        />
+        <path d="m10 15 5-3-5-3z" />
+      </svg>
+    </a>
+    <a
+      href="https://github.com/"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="GitHub"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path
+          d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+        />
+        <path d="M9 18c-4.51 2-5-2-7-2" />
       </svg>
     </a>
   </div>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  // Isi dengan URL asli saat tersedia. String kosong = placeholder "segera hadir",
-  // bukan tautan fiktif — ikon tidak mengarah ke akun yang tidak ada.
-  email: { type: String, default: '' },
-  github: { type: String, default: '' },
-  linkedin: { type: String, default: '' },
-  instagram: { type: String, default: '' },
-})
-
-const emit = defineEmits(['placeholder-click'])
-
-const links = computed(() => [
-  {
-    label: 'Email',
-    aria: props.email ? 'Kirim email ke Dea' : 'Email segera hadir',
-    href: props.email ? `mailto:${props.email}` : '#',
-    available: Boolean(props.email),
-    icon: 'M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z',
-  },
-  {
-    label: 'GitHub',
-    aria: props.github ? 'GitHub Dea (tab baru)' : 'GitHub segera hadir',
-    href: props.github || '#',
-    available: Boolean(props.github),
-    icon: 'M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z',
-  },
-  {
-    label: 'LinkedIn',
-    aria: props.linkedin ? 'LinkedIn Dea (tab baru)' : 'LinkedIn segera hadir',
-    href: props.linkedin || '#',
-    available: Boolean(props.linkedin),
-    icon: 'M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.4v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z',
-  },
-  {
-    label: 'Instagram',
-    aria: props.instagram ? 'Instagram Dea (tab baru)' : 'Instagram segera hadir',
-    href: props.instagram || '#',
-    available: Boolean(props.instagram),
-    icon: 'M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.69-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16Zm0 3.68a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z',
-  },
-])
-
-const visibleLinks = computed(() => links.value)
-
-function handlePlaceholderClick(event, link) {
-  if (!link.available) {
-    event.preventDefault()
-    emit('placeholder-click', link.label)
-  }
-}
-</script>

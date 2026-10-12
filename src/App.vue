@@ -1,18 +1,22 @@
-<template>
-  <div class="flex min-h-screen flex-col bg-void text-mist">
+﻿<template>
+  <div class="page">
+    <AmbientBackground />
     <AppNavbar />
-    <main id="main-content" class="relative flex-1 pt-16">
-      <RouterView v-slot="{ Component, route }">
-        <transition name="page" mode="out-in">
-          <component :is="Component" :key="route.fullPath" />
-        </transition>
+    <main>
+      <RouterView v-slot="{ Component }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" :key="$route.fullPath" />
+        </Transition>
       </RouterView>
     </main>
     <AppFooter />
+    <ProjectDetail />
   </div>
 </template>
 
 <script setup>
-import AppNavbar from './components/AppNavbar.vue'
-import AppFooter from './components/AppFooter.vue'
+import AmbientBackground from "./components/AmbientBackground.vue";
+import AppNavbar from "./components/AppNavbar.vue";
+import AppFooter from "./components/AppFooter.vue";
+import ProjectDetail from "./components/ProjectDetail.vue";
 </script>

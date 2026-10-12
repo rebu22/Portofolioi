@@ -1,73 +1,77 @@
+﻿<!-- Kartu karya: yang berisi link ke detail, slot kosong hanya pajangan (div, tidak bisa diklik) -->
 <template>
-  <article
-    class="glass-panel group flex h-full flex-col overflow-hidden rounded-3xl transition duration-300 hover:-translate-y-1.5 hover:border-violet-300/40 hover:shadow-[0_24px_60px_-18px_rgba(139,92,246,0.55)]"
+  <RouterLink
+    v-if="!project.empty"
+    :to="`/portfolio/${project.id}`"
+    class="card group flex flex-col overflow-hidden transition-transform hover:-translate-y-1 hover:rotate-0 tilt-l"
   >
-    <!-- Thumbnail: ilustrasi SVG relevan per proyek (bukan screenshot fiktif) -->
-    <div class="relative h-44 overflow-hidden" aria-hidden="true">
-      <svg viewBox="0 0 400 180" class="h-full w-full" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient :id="`pc-${project.id}`" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" :stop-color="art.from" />
-            <stop offset="1" :stop-color="art.to" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="180" :fill="`url(#pc-${project.id})`" />
-        <text x="50%" y="56%" text-anchor="middle" font-size="64">{{ art.emoji }}</text>
-        <circle cx="60" cy="40" r="24" fill="#ffffff" opacity="0.08" />
-        <circle cx="350" cy="140" r="34" fill="#ffffff" opacity="0.06" />
-      </svg>
-      <span
-        class="absolute top-3 left-3 rounded-full border border-violet-200/30 bg-[#07040d]/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-lilac uppercase"
-      >
+    <div
+      class="relative m-3 mb-0 overflow-hidden rounded-2xl border-[2.5px] border-[#33202f]"
+      style="background: #ffeed6"
+    >
+      <img
+        :src="project.image"
+        :alt="`Thumbnail ${project.title}`"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <span class="tag sun absolute left-3 top-3">
         {{ project.category }}
       </span>
-      <span
-        v-if="project.status === 'placeholder'"
-        class="absolute top-3 right-3 rounded-full border border-amber-300/40 bg-amber-500/15 px-3 py-1 text-[11px] font-semibold text-amber-200"
-        title="Konsep/latihan — bukan aplikasi selesai"
-      >
-        Placeholder
-      </span>
     </div>
-
-    <div class="flex flex-1 flex-col gap-3 p-5 sm:p-6">
-      <h3 class="font-display text-lg font-bold text-white">{{ project.name }}</h3>
-      <p class="flex-1 text-sm leading-relaxed text-fog">{{ project.shortDescription }}</p>
-      <ul class="flex flex-wrap gap-1.5" aria-label="Teknologi yang digunakan">
-        <li
-          v-for="tech in project.technologies"
+    <div class="flex flex-1 flex-col p-5">
+      <h3 class="display text-xl leading-tight">{{ project.title }}</h3>
+      <p class="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed">
+        {{ project.summary }}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <span
+          v-for="tech in project.tech.slice(0, 3)"
           :key="tech"
-          class="rounded-full bg-violet-500/15 px-2.5 py-1 text-[11px] font-semibold text-lilac"
+          class="tag grape"
         >
           {{ tech }}
-        </li>
-      </ul>
-      <RouterLink
-        :to="`/portfolio/${project.id}`"
-        class="mt-1 inline-flex items-center justify-center gap-2 rounded-xl border border-violet-300/30 bg-violet-600/20 px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-violet-600/35 hover:border-violet-300/60"
-        :aria-label="`Lihat detail proyek ${project.name}`"
-      >
-        Lihat Detail
-        <span aria-hidden="true">→</span>
-      </RouterLink>
+        </span>
+      </div>
+      <span class="link-arrow mt-4">LIHAT DETAIL →</span>
     </div>
-  </article>
+  </RouterLink>
+
+  <div v-else class="card tilt-r flex flex-col overflow-hidden opacity-90">
+    <div
+      class="relative m-3 mb-0 overflow-hidden rounded-2xl border-[2.5px] border-dashed border-[#33202f]"
+      style="background: #ffeed6"
+    >
+      <img
+        :src="project.image"
+        :alt="`Slot kosong: ${project.title}`"
+        class="aspect-[4/3] w-full object-cover"
+        loading="lazy"
+      />
+      <span class="tag mint absolute left-3 top-3">
+        {{ project.category }}
+      </span>
+    </div>
+    <div class="flex flex-1 flex-col p-5">
+      <h3 class="display text-xl leading-tight">{{ project.title }}</h3>
+      <p class="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed">
+        {{ project.summary }}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <span v-for="tech in project.tech.slice(0, 3)" :key="tech" class="tag">
+          {{ tech }}
+        </span>
+      </div>
+      <span
+        class="mt-4 inline-block text-xs font-black uppercase tracking-widest opacity-60"
+        >segera hadir</span
+      >
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   project: { type: Object, required: true },
-})
-
-// Motif visual berbeda per jenis thumbnail — murni dekoratif.
-const artMap = {
-  'task-board': { emoji: '📋', from: '#2b1658', to: '#0b0714' },
-  'data-chart': { emoji: '📊', from: '#1e1b4b', to: '#0b0714' },
-  storefront: { emoji: '🏪', from: '#3b0764', to: '#0b0714' },
-  gamepad: { emoji: '🎮', from: '#251058', to: '#07040d' },
-}
-
-const art = computed(() => artMap[props.project.image] ?? { emoji: '✨', from: '#2b1658', to: '#0b0714' })
+});
 </script>

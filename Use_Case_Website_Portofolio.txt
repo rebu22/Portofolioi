@@ -1,0 +1,179 @@
+DOKUMEN USE CASE
+Website Portofolio Pribadi — Dea Cinta Ramadani
+NIM 11241025 — Informatika, Institut Teknologi Kalimantan, Angkatan 2024
+
+1. GAMBARAN SISTEM
+Website ini merupakan portofolio digital satu arah yang bersifat informatif.
+Isinya profil, latar belakang pengembangan web, dokumentasi studi kasus
+proyek, serta sarana kontak. Tidak ada halaman login dan tidak ada peran
+admin karena seluruh konten ditampilkan langsung kepada pengunjung.
+Interaksi yang tersedia menyesuaikan kebutuhan itu: membaca, menyaring,
+membuka detail, menandai, dan mengirim pesan.
+
+2. AKTOR
+2.1 Pengunjung
+     Orang yang membuka website, baik perekrut, dosen, maupun pengguna umum.
+     Seluruh use case di bawah dijalankan oleh aktor ini.
+2.2 Sistem
+     Bukan manusia, dicantumkan hanya sebagai pihak yang memberi respon
+     (menampilkan halaman, memeriksa isian, menyimpan draf pesan di peramban).
+
+3. DAFTAR USE CASE
+UC-01  Menampilkan Halaman Beranda
+UC-02  Membaca Profil Singkat Lewat Dialog
+UC-03  Menandai Bidang Keahlian
+UC-04  Membuka Tautan Media Sosial
+UC-05  Membaca Halaman Tentang
+UC-06  Menyaring Daftar Proyek Menurut Kategori
+UC-07  Membaca Detail Studi Kasus Proyek
+UC-08  Mengirim Pesan Melalui Formulir Kontak
+UC-09  Menghubungi Lewat Surel
+UC-10  Berpindah Halaman Melalui Navigasi
+
+4. RINCIAN USE CASE
+
+UC-01 — Menampilkan Halaman Beranda
+Tujuan: pengunjung tiba di alamat situs dan langsung mendapat gambaran
+isi web tanpa harus menebak-nebak.
+Kondisi awal: pengunjung membuka alamat website di peramban desktop
+atau ponsel.
+Alur kejadian:
+  1. Pengunjung mengetik alamat situs lalu menekan enter.
+  2. Sistem menampilkan hero (nama, program studi, fokus keahlian),
+     foto profil, dua panel ringkasan (profil dan karya), daftar bidang
+     keahlian, dan deretan ikon media sosial.
+  3. Pengunjung menggulir ke bawah atau menekan tombol Jelajahi Portofolio
+     untuk melihat bagian berikutnya.
+Hasil akhir: beranda tampil utuh dan seluruh tombol dalam keadaan aktif.
+Alur lain: bila alamat salah ketik atau ID proyek tidak dikenal, sistem
+mengarahkan kembali ke halaman yang tersedia.
+
+UC-02 — Membaca Profil Singkat Lewat Dialog
+Tujuan: memberi ringkasan cepat tanpa memaksa pengunjung pindah halaman.
+Kondisi awal: pengunjung sedang berada di beranda.
+Alur kejadian:
+  1. Pengunjung menekan tautan SELENGKAPNYA pada panel profil.
+  2. Sistem membuka jendela dialog berisi profil singkat (nama, NIM,
+     prodi, fokus keilmuan).
+  3. Pengunjung membaca isi dialog lalu menekan tombol tutup atau tombol
+     escape; fokus kembali ke tombol semula.
+Hasil akhir: dialog tertutup dan posisi halaman tidak berubah.
+
+UC-03 — Menandai Bidang Keahlian
+Tujuan: pengunjung dapat menandai bidang yang menurutnya paling relevan,
+misalnya saat menilai kecocokan kompetensi.
+Kondisi awal: bagian Bidang Keahlian sudah tampil di beranda.
+Alur kejadian:
+  1. Pengunjung menekan salah satu label, contohnya Analisis Sistem
+     atau Vue.js.
+  2. Sistem mengubah status label menjadi aktif dan mencatat pilihan
+     tersebut di penyimpanan lokal peramban.
+  3. Keterangan di bawah daftar menyesuaikan jumlah bidang yang ditandai.
+  4. Pilihan tetap tersimpan walaupun halaman dimuat ulang; menekan ulang
+     label yang sama akan membatalkan tanda.
+Hasil akhir: deretan bidang yang ditandai tersimpan di perangkat pengunjung.
+
+UC-04 — Membuka Tautan Media Sosial
+Tujuan: menyambungkan pengunjung ke kanal luar yang dimiliki pemilik web.
+Kondisi awal: ikon media sosial tampil di beranda, kontak, atau footer.
+Alur kejadian:
+  1. Pengunjung menekan salah satu ikon (Facebook, X, Instagram, LinkedIn,
+     YouTube, GitHub).
+  2. Sistem membuka halaman platform tersebut pada tab baru peramban.
+Hasil akhir: tab baru terbuka dan halaman portofolio tetap terbuka.
+Alur lain: bila peramban memblokir tab baru, pengunjung dapat menekan
+klik kanan lalu pilih Buka di tab baru.
+
+UC-05 — Membaca Halaman Tentang
+Tujuan: menjelaskan alasan web ini dibangun: konteks kebutuhan, masalah
+yang dijawab, solusi yang ditawarkan, dan tujuan pengembangannya.
+Kondisi awal: pengunjung membuka menu Tentang.
+Alur kejadian:
+  Pengunjung masuk ke halaman Tentang. Di sisi kiri tampil foto, fakta
+  singkat (nama, NIM, prodi, kampus, angkatan, status), dan kartu tujuan
+  pengembangan. Di sisi kanan tampil kartu konteks dan kebutuhan, kartu
+  identifikasi masalah (tiga butir), serta kartu solusi (empat butir).
+  Pengunjung membaca dari atas ke bawah; dua tombol di akhir kartu kiri
+  mengarah ke halaman Portofolio dan Kontak.
+Hasil akhir: pengunjung memahami latar belakang dan arah website.
+
+UC-06 — Menyaring Daftar Proyek Menurut Kategori
+Tujuan: membantu pengunjung menemukan jenis karya tertentu tanpa harus
+menggulir semuanya.
+Kondisi awal: pengunjung membuka halaman Portofolio yang memuat tiga
+studi kasus (Pengembangan Web, Analisis Sistem, UI/UX).
+Alur kejadian:
+  1. Pengunjung menekan salah satu tombol kategori di atas daftar.
+  2. Sistem langsung menampilkan hanya kartu yang kategorinya cocok;
+     tombol aktif diberi tanda bunga.
+  3. Tersedia pula tombol Acak Urutan untuk mengubah susunan kartu bila
+     pengunjung ingin melihat dari urutan berbeda.
+  4. Menekan kategori Semua akan mengembalikan seluruh daftar.
+Hasil akhir: daftar yang tampil sesuai kategori pilihan.
+Alur lain: bila suatu kategori tidak berisi proyek, sistem menampilkan
+pesan Tidak Ada Proyek beserta saran memilih kategori lain.
+
+UC-07 — Membaca Detail Studi Kasus Proyek
+Tujuan: menyajikan satu proyek secara lengkap, dari latar belakang sampai
+tantangan dan penyelesaiannya.
+Kondisi awal: pengunjung melihat kartu proyek di halaman Portofolio.
+Alur kejadian:
+  1. Pengunjung menekan kartu proyek atau tautan LIHAT DETAIL.
+  2. Sistem membuka halaman detail berisi deskripsi, deretan teknologi,
+     kartu latar belakang masalah, kartu tujuan pengembangan, serta kartu
+     tantangan dan penyelesaian.
+  3. Untuk studi kasus yang dokumentasinya masih disusun, sistem
+     menampilkan pemberitahuan bahwa dokumentasi dalam tahap finalisasi
+     beserta tombol kembali ke daftar portofolio.
+  4. Tautan KEMBALI KE PORTOFOLIO di bagian atas mengembalikan pengunjung
+     ke daftar.
+Hasil akhir: isi studi kasus terbaca lengkap.
+
+UC-08 — Mengirim Pesan Melalui Formulir Kontak
+Tujuan: memberi jalan bagi pengunjung untuk menyampaikan pertanyaan,
+tawaran kolaborasi, atau peluang profesional.
+Kondisi awal: pengunjung membuka halaman Kontak.
+Alur kejadian:
+  1. Pengunjung mengisi tiga kolom: nama lengkap (minimal 3 karakter),
+     alamat surel dengan format yang sah, dan isi pesan (10 sampai
+     500 karakter, jumlahnya terlihat di bawah kolom).
+  2. Pengunjung menekan tombol Kirim Pesan.
+  3. Sistem memeriksa isian. Bila ada yang kurang tepat, sistem menampilkan
+     catatan perbaikan tepat di bawah kolom yang bermasalah dan pesan
+     tidak diproses.
+  4. Bila isian sah, sistem menyimpan pesan sebagai draf pada penyimpanan
+     lokal peramban, menampilkan ucapan terima kasih yang menyebut nama
+     pengirim, lalu mengosongkan kolom.
+Hasil akhir: pesan tersimpan di perangkat pengunjung dan formulir kembali
+kosong. Balasan menyusul melalui surel dalam 1–2 hari kerja.
+
+UC-09 — Menghubungi Lewat Surel
+Tujuan: alternatif tercepat bagi pengunjung yang lebih suka memakai
+aplikasi surel sendiri.
+Kondisi awal: kartu Kontak Profesional tampil di halaman Kontak.
+Alur kejadian:
+  Pengunjung menekan alamat 11241025@student.itk.ac.id. Sistem meminta
+  peramban membuka aplikasi surel bawaan dengan alamat tersebut sudah
+  terisi sebagai tujuan. Pengunjung tinggal menulis subjek dan isi pesan.
+Hasil akhir: jendela tulis surel terbuka dengan alamat tujuan yang benar.
+
+UC-10 — Berpindah Halaman Melalui Navigasi
+Tujuan: memastikan pengunjung dapat mencapai Beranda, Tentang,
+Portofolio, dan Kontak dari posisi mana pun.
+Kondisi awal: website terbuka di halaman mana saja.
+Alur kejadian:
+  Pada layar lebar, pengunjung menekan tautan di bilah atas; tautan
+  halaman aktif ditandai. Pada layar kecil, pengunjung menekan ikon
+  burger untuk membuka menu, memilih tujuan, dan menu otomatis tertutup
+  setelah pilihan ditekan. Setiap perpindahan menggulir halaman ke atas.
+Hasil akhir: halaman tujuan tampil dari bagian paling atas.
+
+5. CATATAN BATASAN
+— Website berjalan sebagai aplikasi statis satu arah; tidak ada basis
+  data sisi server dan tidak ada akun pengguna.
+— Pesan dari formulir tersimpan sebagai draf di peramban pengunjung
+  (localStorage), bukan terkirim ke server.
+— Domisili yang tercantum: Kalimantan Timur, Indonesia. Surel aktif:
+  11241025@student.itk.ac.id.
+— Seluruh tombol media sosial mengarah ke platform terkait dan dibuka
+  pada tab baru.

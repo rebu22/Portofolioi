@@ -1,63 +1,47 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../pages/HomePage.vue'
-import AboutPage from '../pages/AboutPage.vue'
-import PortfolioPage from '../pages/PortfolioPage.vue'
-import ContactPage from '../pages/ContactPage.vue'
-import ProjectDetailPage from '../pages/ProjectDetailPage.vue'
+﻿import { createRouter, createWebHashHistory } from "vue-router";
 
+const HomePage = () => import("../pages/HomePage.vue");
+const AboutPage = () => import("../pages/AboutPage.vue");
+const PortfolioPage = () => import("../pages/PortfolioPage.vue");
+const ProjectDetailPage = () => import("../pages/ProjectDetailPage.vue");
+const ContactPage = () => import("../pages/ContactPage.vue");
+
+// 5 halaman: Beranda, Tentang, Portofolio, Detail Proyek (dinamis), Kontak
 const routes = [
+  { path: "/", name: "home", component: HomePage, meta: { title: "Beranda" } },
   {
-    path: '/',
-    name: 'home',
-    component: HomePage,
-    meta: { title: 'Dea Cinta Ramadani — Informatika Student' },
-  },
-  {
-    path: '/about',
-    name: 'about',
+    path: "/about",
+    name: "about",
     component: AboutPage,
-    meta: { title: 'About — Dea Cinta Ramadani' },
+    meta: { title: "Tentang" },
   },
   {
-    path: '/portfolio',
-    name: 'portfolio',
+    path: "/portfolio",
+    name: "portfolio",
     component: PortfolioPage,
-    meta: { title: 'Portfolio — Dea Cinta Ramadani' },
+    meta: { title: "Portofolio" },
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: ContactPage,
-    meta: { title: 'Contact — Dea Cinta Ramadani' },
-  },
-  {
-    // LAYOUT 5 — dynamic route detail proyek
-    path: '/portfolio/:id',
-    name: 'project-detail',
+    path: "/portfolio/:id",
+    name: "project-detail",
     component: ProjectDetailPage,
-    meta: { title: 'Project Detail — Dea Cinta Ramadani' },
+    meta: { title: "Detail Proyek" },
   },
   {
-    path: '/:pathMatch(.*)*',
-    name: 'not-found',
-    component: PortfolioPage,
-    meta: { title: 'Portfolio — Dea Cinta Ramadani', fromNotFound: true },
+    path: "/contact",
+    name: "contact",
+    component: ContactPage,
+    meta: { title: "Kontak" },
   },
-]
+  { path: "/:pathMatch(.*)*", redirect: "/" },
+];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
-  // Pindah halaman selalu mulai dari atas; pertahankan anchor bila ada hash.
-  scrollBehavior(to, _from, savedPosition) {
-    if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
-    return { top: 0 }
+  scrollBehavior() {
+    return { top: 0, behavior: "smooth" };
   },
-})
+});
 
-router.afterEach((to) => {
-  document.title = to.meta?.title ?? 'Dea Cinta Ramadani — Informatika Student'
-})
-
-export default router
+export default router;

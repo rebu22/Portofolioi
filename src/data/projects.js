@@ -1,126 +1,65 @@
-/**
- * Data proyek terstruktur — mudah ditambah / diperbarui.
- *
- * Kejujuran konten: proyek-proyek di bawah ini adalah PLACEHOLDER yang diberi
- * penanda jelas (`status: 'placeholder'`). Jangan mengklaim sebuah aplikasi
- * sudah selesai jika belum ada bukti nyata. Ganti objek placeholder dengan
- * data proyek sungguhan (ringkasan, konteks, tech stack, tautan repo) saat
- * bukti implementasi sudah tersedia.
- */
+﻿// Data studi kasus proyek: latar belakang, analisis, arsitektur, teknologi,
+// tantangan, dan solusi yang diimplementasikan.
+import portfolioThumb from "../assets/project-portfolio.svg";
+import emptyThumb from "../assets/empty.svg";
+
 export const projects = [
   {
-    id: 'sistem-informasi-tugas-kuliah',
-    name: 'Sistem Informasi Tugas Kuliah',
-    shortDescription:
-      'PLACEHOLDER — Konsep aplikasi web untuk mencatat, memprioritaskan, dan memantau tugas kuliah dalam satu dasbor.',
-    category: 'Web App · Konsep',
-    technologies: ['Vue 3', 'Vite', 'Tailwind CSS'],
-    image: 'task-board',
-    status: 'placeholder',
+    id: "website-portfolio",
+    title: "Website Portofolio Pribadi",
+    summary:
+      "Platform portofolio digital berbasis Vue 3: pusat dokumentasi proyek, analisis sistem, dan identitas profesional.",
+    description:
+      "Website portofolio pribadi yang dikembangkan sebagai pusat informasi terpadu: memuat profil profesional, dokumentasi studi kasus proyek, serta analisis sistem yang terstruktur. Dibangun dengan Vue 3 Composition API, Vue Router, dan Tailwind CSS dengan pendekatan minimalist single-page yang bersih, responsif, dan berpusat pada pengguna.",
     problem:
-      'Mahasiswa sering kehilangan jejak tenggat tugas karena tersebar di grup chat, LMS, dan catatan pribadi.',
-    goal: 'Merancang satu dasbor sederhana untuk mencatat tugas, tenggat, dan status penyelesaian.',
-    solution:
-      'Konsep CRUD tugas dengan filter mata kuliah, penanda prioritas, dan pengingat tenggat. Status saat ini: rancangan — belum ada implementasi yang dapat didemokan.',
-    architecture: ['Halaman daftar tugas', 'Form tambah/ubah tugas', 'Filter & pencarian', 'Penyimpanan lokal (rencana)'],
+      "CV konvensional memiliki keterbatasan ruang untuk menjelaskan detail kompleks proyek seperti arsitektur sistem, pemilihan tech stack, dan tantangan yang diselesaikan. Diperlukan media yang mampu menyajikan bukti nyata kompetensi secara komprehensif.",
+    goal: "Menghadirkan platform portofolio yang responsif, terstruktur, dan mudah dikembangkan — menampilkan studi kasus lengkap dari latar belakang masalah hingga solusi, sekaligus memperkuat personal branding profesional di bidang teknologi.",
+    tech: ["Vue 3", "Vue Router", "Tailwind CSS", "Vite"],
+    category: "Pengembangan Web",
+    image: portfolioThumb,
     challenges: [
       {
-        title: 'Belum ada backend',
-        resolution: 'Rencana awal memakai penyimpanan lokal di browser agar bisa dipakai tanpa server.',
+        title: "Penyajian konten yang padat namun tetap mudah dinavigasi",
+        solution:
+          "Struktur single-page yang dikelompokkan ke dalam kartu tematik (konteks, masalah, solusi, tujuan) dengan navigasi hash-based routing agar seluruh halaman dapat diakses cepat di hosting statis.",
       },
       {
-        title: 'Desain prioritas',
-        resolution: 'Menentukan aturan skor prioritas sederhana dari tenggat dan bobot nilai.',
+        title: "Menjaga performa dan aksesibilitas di berbagai perangkat",
+        solution:
+          "Menerapkan standar web modern: build statis yang ringan, lazy-loading aset, desain responsif mobile-first, dan label aksesibilitas pada seluruh elemen interaktif.",
       },
     ],
-    result: 'Belum ada hasil implementasi yang dapat dibuktikan. Bagian ini akan diisi setelah ada demo atau repository.',
-    repoUrl: '',
-    demoUrl: '',
   },
   {
-    id: 'analisis-data-nilai-mahasiswa',
-    name: 'Analisis Data Nilai Mahasiswa',
-    shortDescription:
-      'PLACEHOLDER — Proyek latihan analisis data untuk memvisualisasikan distribusi nilai dan kehadiran kelas.',
-    category: 'Data Analysis · Latihan',
-    technologies: ['Python', 'Pandas', 'Matplotlib'],
-    image: 'data-chart',
-    status: 'placeholder',
-    problem:
-      'Data nilai dalam spreadsheet sulit dibaca sekilas — tren dan outlier tidak langsung terlihat.',
-    goal: 'Mempelajari alur analisis data dasar: membersihkan data, menghitung statistik, dan membuat visualisasi.',
-    solution:
-      'Skrip latihan yang membaca file CSV contoh, menghitung rata-rata per mata kuliah, dan menggambar grafik distribusi. Status saat ini: latihan — dataset contoh, bukan data nyata.',
-    architecture: ['Dataset CSV contoh', 'Pembersihan data', 'Statistik deskriptif', 'Visualisasi grafik'],
-    challenges: [
-      {
-        title: 'Data contoh belum rapi',
-        resolution: 'Mempraktikkan penanganan nilai kosong dan format yang tidak konsisten.',
-      },
-      {
-        title: 'Memilih visual yang tepat',
-        resolution: 'Membandingkan histogram, box plot, dan bar chart untuk distribusi nilai.',
-      },
-    ],
-    result: 'Belum ada hasil analisis final. Grafik contoh akan ditampilkan di sini setelah latihan selesai.',
-    repoUrl: '',
-    demoUrl: '',
+    id: "analisis-sistem-akademik",
+    title: "Analisis Sistem Informasi Akademik",
+    summary:
+      "Studi kasus pemodelan sistem: analisis kebutuhan, DFD, dan rancangan arsitektur untuk layanan akademik.",
+    description:
+      "Studi kasus analisis dan pemodelan sistem informasi akademik: mencakup identifikasi kebutuhan pengguna, pemodelan aliran data (DFD), serta rancangan arsitektur dan pemilihan teknologi yang tepat guna.",
+    problem: "Proses layanan akademik yang manual membutuhkan analisis alur sistem yang sistematis sebelum diimplementasikan ke dalam aplikasi.",
+    goal: "Menghasilkan dokumentasi analisis sistem yang komprehensif sebagai fondasi pengembangan aplikasi yang fungsional dan efisien.",
+    tech: ["Analisis Sistem", "DFD", "Perancangan Arsitektur"],
+    category: "Analisis Sistem",
+    image: emptyThumb,
+    empty: true,
   },
   {
-    id: 'landing-page-umkm-lokal',
-    name: 'Landing Page UMKM Lokal',
-    shortDescription:
-      'PLACEHOLDER — Konsep landing page satu halaman untuk profil usaha kecil: katalog singkat dan kontak.',
-    category: 'Frontend · Konsep',
-    technologies: ['HTML', 'Tailwind CSS', 'JavaScript'],
-    image: 'storefront',
-    status: 'placeholder',
-    problem:
-      'Banyak usaha kecil belum punya halaman profil digital yang rapi untuk dibagikan ke calon pembeli.',
-    goal: 'Menyusun template landing page ringan: hero, katalog singkat, testimoni, dan tombol kontak.',
-    solution:
-      'Rancangan layout responsif dengan section katalog dan tautan pesan. Status saat ini: konsep desain — belum ada klien maupun situs live.',
-    architecture: ['Hero & profil usaha', 'Katalog produk', 'Testimoni', 'Kontak / lokasi'],
-    challenges: [
-      {
-        title: 'Aset foto produk',
-        resolution: 'Menyiapkan panduan foto sederhana agar katalog terlihat konsisten meski diambil dengan HP.',
-      },
-      {
-        title: 'Performa di HP',
-        resolution: 'Menargetkan ukuran halaman kecil dan tanpa dependensi berat.',
-      },
-    ],
-    result: 'Belum ada situs live. Tautan demo akan ditambahkan setelah implementasi pertama selesai.',
-    repoUrl: '',
-    demoUrl: '',
+    id: "desain-antarmuka-aplikasi",
+    title: "Desain Antarmuka Aplikasi",
+    summary:
+      "Studi kasus UI/UX: perancangan antarmuka yang bersih, konsisten, dan berorientasi pada pengalaman pengguna.",
+    description:
+      "Studi kasus perancangan antarmuka aplikasi dengan prinsip user-centric: riset kebutuhan pengguna, penyusunan hierarki informasi, serta implementasi desain yang konsisten dan aksesibel.",
+    problem: "Antarmuka yang kompleks menyulitkan pengguna menemukan informasi inti dalam waktu singkat.",
+    goal: "Menghasilkan desain antarmuka yang minimalis, responsif, dan mudah digunakan di berbagai perangkat.",
+    tech: ["UI/UX", "Desain Responsif", "Aksesibilitas"],
+    category: "UI/UX",
+    image: emptyThumb,
+    empty: true,
   },
-  {
-    id: 'mini-game-edukasi-logika',
-    name: 'Mini-Game Edukasi Logika',
-    shortDescription:
-      'PLACEHOLDER — Ide game browser sederhana untuk melatih logika dasar lewat puzzle berlevel.',
-    category: 'Game · Ide',
-    technologies: ['JavaScript', 'Canvas'],
-    image: 'gamepad',
-    status: 'placeholder',
-    problem: 'Belajar logika pemrograman terasa abstrak tanpa media latihan yang menyenangkan.',
-    goal: 'Mengeksplorasi pembuatan puzzle berlevel: aturan main jelas, skor, dan umpan balik instan.',
-    solution:
-      'Dokumen ide dan sketsa alur level. Status saat ini: ide — belum ada playable build.',
-    architecture: ['Loop permainan', 'Manajemen level', 'Skor & nyawa', 'Umpan balik visual'],
-    challenges: [
-      {
-        title: 'Keseimbangan kesulitan',
-        resolution: 'Merancang kurva level dari mudah ke menantang dengan playtest mandiri.',
-      },
-    ],
-    result: 'Belum ada build yang bisa dimainkan. Halaman ini akan diperbarui saat prototipe pertama ada.',
-    repoUrl: '',
-    demoUrl: '',
-  },
-]
+];
 
-export function getProjectById(id) {
-  return projects.find((p) => p.id === id)
+export function getProject(id) {
+  return projects.find((p) => p.id === id);
 }
