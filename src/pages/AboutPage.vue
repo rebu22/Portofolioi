@@ -19,7 +19,7 @@
       <!-- Layout editorial: foto + narasi -->
       <div class="mt-12 grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div class="lg:sticky lg:top-24">
-          <ProfileImage alt="Ilustrasi profil Dea Cinta Ramadani" />
+          <ProfileImage alt="Foto profil Dea Cinta Ramadani" />
           <div class="glass-panel mt-6 rounded-2xl p-5">
             <h2 class="font-display text-sm font-bold tracking-[0.18em] text-lilac uppercase">Fakta singkat</h2>
             <ul class="mt-3 flex flex-col gap-2 text-sm text-fog">
