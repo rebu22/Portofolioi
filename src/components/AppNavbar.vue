@@ -23,6 +23,11 @@
           >Portofolio</RouterLink
         >
         <RouterLink
+          :class="{ 'is-active': route.path === '/skill' }"
+          to="/skill"
+          >Skill</RouterLink
+        >
+        <RouterLink
           :class="{ 'is-active': route.path === '/contact' }"
           to="/contact"
           >Kontak</RouterLink
@@ -86,6 +91,12 @@
         to="/portfolio"
         @click="menuOpen = false"
         >✿ Portofolio</RouterLink
+      >
+      <RouterLink
+        :class="{ 'is-active': route.path === '/skill' }"
+        to="/skill"
+        @click="menuOpen = false"
+        >✿ Skill</RouterLink
       >
       <RouterLink
         :class="{ 'is-active': route.path === '/contact' }"

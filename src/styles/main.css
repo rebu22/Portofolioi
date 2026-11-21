@@ -83,7 +83,8 @@ main {
   position: sticky;
   top: 12px;
   z-index: 40;
-  margin: 12px auto 0;
+  width: fit-content;
+  margin: 0 auto;
   max-width: 1080px;
   padding-inline: 20px;
 }
@@ -553,6 +554,9 @@ main {
 }
 
 @media (max-width: 860px) {
+  .topbar {
+    width: auto;
+  }
   .navlinks {
     display: none;
   }

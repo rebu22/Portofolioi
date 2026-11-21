@@ -16,6 +16,7 @@
         <RouterLink class="flink" to="/">Beranda</RouterLink>
         <RouterLink class="flink" to="/about">Tentang</RouterLink>
         <RouterLink class="flink" to="/portfolio">Portofolio</RouterLink>
+        <RouterLink class="flink" to="/skill">Skill</RouterLink>
         <RouterLink class="flink" to="/contact">Kontak</RouterLink>
       </nav>
       <div class="md:text-right">

@@ -4,9 +4,10 @@ const HomePage = () => import("../pages/HomePage.vue");
 const AboutPage = () => import("../pages/AboutPage.vue");
 const PortfolioPage = () => import("../pages/PortfolioPage.vue");
 const ProjectDetailPage = () => import("../pages/ProjectDetailPage.vue");
+const SkillPage = () => import("../pages/SkillPage.vue");
 const ContactPage = () => import("../pages/ContactPage.vue");
 
-// 5 halaman: Beranda, Tentang, Portofolio, Detail Proyek (dinamis), Kontak
+// 6 halaman: Beranda, Tentang, Portofolio, Detail Proyek (dinamis), Skill, Kontak
 const routes = [
   { path: "/", name: "home", component: HomePage, meta: { title: "Beranda" } },
   {
@@ -26,6 +27,12 @@ const routes = [
     name: "project-detail",
     component: ProjectDetailPage,
     meta: { title: "Detail Proyek" },
+  },
+  {
+    path: "/skill",
+    name: "skill",
+    component: SkillPage,
+    meta: { title: "Skill" },
   },
   {
     path: "/contact",

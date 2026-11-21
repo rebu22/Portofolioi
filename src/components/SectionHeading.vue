@@ -1,12 +1,12 @@
 ﻿<template>
-  <div class="max-w-2xl">
+  <div class="section-heading max-w-2xl">
     <p v-if="eyebrow" class="pill sun">{{ eyebrow }}</p>
     <h2 class="display mt-4 text-4xl sm:text-5xl" style="color: var(--ink)">
       {{ title }}
     </h2>
     <p
       v-if="description"
-      class="mt-4 max-w-xl leading-relaxed"
+      class="section-desc mt-4 max-w-xl leading-relaxed"
       style="color: var(--muted)"
     >
       {{ description }}

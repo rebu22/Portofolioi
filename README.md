@@ -13,15 +13,16 @@ npm.cmd run build    # build produksi ke dist/
 npm.cmd run preview  # pratinjau hasil build
 ```
 
-## Struktur (5 halaman)
+## Struktur (6 halaman)
 
 - `/` Beranda — hero, profil singkat, bidang keahlian, media sosial
 - `/about` Tentang — konteks, identifikasi masalah, solusi, tujuan pengembangan
 - `/portfolio` Portofolio — daftar studi kasus + filter kategori
 - `/portfolio/:id` Detail Proyek — dokumentasi latar belakang, tujuan, tantangan dan penyelesaian
+- `/skill` Skill — kemampuan yang dikembangkan beserta penerapannya di portofolio
 - `/contact` Kontak — formulir pesan bervalidasi + informasi kontak profesional
 
-Komponen (`src/components/`): AmbientBackground, AppFooter, AppNavbar, ContactForm, HeroSection, InfoPanel, PageShell, ProfileImage, ProjectCard, ProjectDetail (dialog), SectionHeading, SocialLinks, StickerWall. State dialog: `src/composables/usePanelDialog.js`. Data: `src/data/projects.js`.
+Komponen (`src/components/`): AmbientBackground, AppFooter, AppNavbar, ContactForm, HeroSection, InfoPanel, PageShell, ProfileImage, ProjectCard, ProjectDetail (dialog), SectionHeading, SocialLinks, StickerWall. State dialog: `src/composables/usePanelDialog.js`. Data: `src/data/projects.js`, `src/data/skills.js`.
 
 Dokumen use case: `Use_Case_Website_Portofolio.txt`.
 
