@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Website portofolio 5 halaman Dea Cinta Ramadani — Informatika ITK angkatan 2024 (Vue 3 + Tailwind + Vue Router).",
+  "description": "Website portofolio 6 halaman Dea Cinta Ramadani — Informatika ITK angkatan 2024 (Vue 3 + Tailwind + Vue Router).",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

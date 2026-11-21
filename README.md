@@ -2,15 +2,17 @@
 
 Website portofolio Dea Cinta Ramadani — mahasiswi Informatika Institut Teknologi Kalimantan angkatan 2024 (NIM 11241025). Dibangun dengan Vue 3 (Composition API) + Vue Router + Tailwind CSS 4 + Vite.
 
-Situs live: https://nxq4enffl6sjl.space.minimax.io
+## Menjalankan secara lokal
 
-## Menjalankan
+Butuh Node.js 18 atau lebih baru.
 
 ```bash
-npm.cmd install
-npm.cmd run dev      # server pengembangan (http://localhost:5173)
-npm.cmd run build    # build produksi ke dist/
-npm.cmd run preview  # pratinjau hasil build
+git clone https://github.com/rebu22/Portofolioi.git
+cd Portofolioi
+npm install
+npm run dev      # server pengembangan (http://localhost:5173)
+npm run build    # build produksi ke dist/
+npm run preview  # pratinjau hasil build
 ```
 
 ## Struktur (6 halaman)
@@ -24,9 +26,8 @@ npm.cmd run preview  # pratinjau hasil build
 
 Komponen (`src/components/`): AmbientBackground, AppFooter, AppNavbar, ContactForm, HeroSection, InfoPanel, PageShell, ProfileImage, ProjectCard, ProjectDetail (dialog), SectionHeading, SocialLinks, StickerWall. State dialog: `src/composables/usePanelDialog.js`. Data: `src/data/projects.js`, `src/data/skills.js`.
 
-Dokumen use case: `Use_Case_Website_Portofolio.txt`.
+## Catatan teknis
 
-## Catatan
-
-- Router memakai hash history agar seluruh halaman tetap berfungsi di hosting statis.
+- Router memakai hash history agar seluruh halaman tetap berfungsi di hosting statis tanpa konfigurasi rewrite.
+- Hasil `npm run build` di folder `dist/` bisa diunggah langsung ke hosting statis mana pun (Vercel, Netlify, GitHub Pages, cPanel).
 - Formulir kontak bervalidasi dan menyimpan pesan sebagai draf lokal di peramban (localStorage); balasan menyusul lewat surel 11241025@student.itk.ac.id dalam 1–2 hari kerja.
